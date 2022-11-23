@@ -1,16 +1,16 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import Product from '../typeorom/entities/Products';
-import { ProductRepository } from '../typeorom/repositories/ProductsRepository';
+import Product from '../typeorm/entities/Product';
+import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 
 interface IRequest {
   id: string;
 }
 class ShowProductService {
-  public async execute({ id }: IRequest): Promise<Product | undefined> {
+  public async execute({ id }: IRequest): Promise<Product> {
     const productsRepository = getCustomRepository(ProductRepository);
 
-    const products = productsRepository.findOne(id);
+    const products = await productsRepository.findOne(id);
 
     if (!products) {
       throw new AppError('Product not fo und');
