@@ -1,4 +1,3 @@
-import Customer from '@modules//customers/typeorm/entities/Customer';
 import {
   Entity,
   CreateDateColumn,
@@ -8,6 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import OrdersProducts from './OrdersProducts';
+import Customer from '@modules//customers/typeorm/entities/Customer';
 
 @Entity('orders')
 class Order {
